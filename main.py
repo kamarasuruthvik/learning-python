@@ -1,5 +1,8 @@
 import os
 import re
+from apis.geo import get_lat_long
+from apis.weather import get_weather
+
 
 from dotenv import load_dotenv
 
@@ -32,7 +35,7 @@ try:
     
     if not city or not date:
         raise ValueError("City and Date are required fields.")
-    elif not re.match(r"%d{2}-%d{2}-%d{4}", date):
+    elif not re.match(r"^\d{2}-\d{2}-\d{4}$", date):
         raise ValueError("Invalid date format. Please enter date in MM-DD-YYYY format.") 
 
     
@@ -48,9 +51,14 @@ try:
     elif re.match(r"([01]?[0-9]|2[0-3]):[0-5][0-9]", time) is None:
         raise ValueError("Invalid time format. Please enter time in HH:MM format.") 
     
-    print(month, day, year)
+    print("\nFetching city data...")
+    lat, lon = get_lat_long(city, api_key)
 
+    print("\nFetching weather data...")
+    min_temp, max_temp = get_weather(lat, lon, api_key, year, month, day)
 
+    print(min_temp, max_temp)
+    print("Done!")
 
 
 
