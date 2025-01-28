@@ -61,4 +61,44 @@ APIs to use:
 
 [{"name":"Guntur","local_names":,"lat":16.2915189,"lon":80.4541588,"country":"IN","state":"Andhra Pradesh"},{"name":"Guntur","local_names":{"id":"Guntur","or":"ଗୁଣ୍ଟୁର"},"lat":-6.2083116,"lon":106.8333124,"country":"ID"},{"name":"Guntur","lat":-6.9757348,"lon":110.6178873,"country":"ID","state":"Central Java"},{"name":"Guntur","lat":-7.3283677,"lon":110.2073025,"country":"ID","state":"Central Java"},{"name":"Guntur","lat":-7.6044463,"lon":110.0229127,"country":"ID","state":"Central Java"}]
                 
-              
+
+- get weather of the place:
+api url: https://api.openweathermap.org/data/3.0/onecall/timemachine?lat={lat}&lon={lon}&dt={time}&appid={API key}
+date format: Timestamp (Unix time, UTC time zone), e.g. dt=1586468027. Data is available from January 1st, 1979 till 4 days ahead
+example response:
+
+                   
+  {
+   "lat":33,
+   "lon":35,
+   "tz":"+02:00",
+   "date":"2020-03-04",
+   "units":"standard",
+   "cloud_cover":{
+      "afternoon":0
+   },
+   "humidity":{
+      "afternoon":33
+   },
+   "precipitation":{
+      "total":0
+   },
+   "temperature":{
+      "min":286.48,
+      "max":299.24,
+      "afternoon":296.15,
+      "night":289.56,
+      "evening":295.93,
+      "morning":287.59
+   },
+   "pressure":{
+      "afternoon":1015
+   },
+   "wind":{
+      "max":{
+         "speed":8.7,
+         "direction":120
+      }
+   }
+}                
+                 
