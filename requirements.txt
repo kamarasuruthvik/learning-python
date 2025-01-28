@@ -1,0 +1,64 @@
+What does the chatbot do?
+- The chatbot is a simple chatbot that can answer questions about the weather in a specific city.
+- Given a specific date and time and city, the chatbot will return the weather information.
+
+Who is the user?
+- Someone who wants to know the weather of a particular city.
+
+How smart is the chatbot?
+- looks for keywords.
+
+Core features:
+- Use String manipulation for better input parsing.
+- Handle invlaid input.
+- Provide weather updates via an API.
+- Answer questions about weather about a specific city.
+
+Plan Logical flow:
+- Greet the user.
+- Ask for the city. *Required 
+- Ask for the date. *Required
+- Ask for the time. *Not required.
+- Make an API Call to get the lat, long of the city: http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid={API key}
+- use lat, long to make weather api call.
+- Make the API call. 
+- Return the weather information.
+- Redo flow.
+
+Probably edge cases:
+- User enters a wrong format for date/time.
+- User enters a city that does not exist. (Handle this with the API)
+- Empty Messages.
+
+Respnose data structure:
+{
+    "hello": "Hi There!"
+    "city": "Enter the city name:(Required) ",
+    "date": "Enter the date:(Required) ", 
+    "time": "Enter the time:(Not Required) ",
+    "confirmation": "Fetching Weather...", 
+    "weather": "The weather in city on date at time is: "
+    "redo": "Do you want to check the weather again?"
+    "error": "Invalid input. Please try again."
+    "error_city": "City not found. Please try again."
+}
+
+
+APIs to use:
+-get name of place: http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid={}
+- example response: 
+                
+[
+   {
+      "name":"London",
+      "local_names":{},
+      "lat":51.5073219,
+      "lon":-0.1276474,
+      "country":"GB",
+      "state":"England"
+   }
+]
+
+[{"name":"Guntur","local_names":,"lat":16.2915189,"lon":80.4541588,"country":"IN","state":"Andhra Pradesh"},{"name":"Guntur","local_names":{"id":"Guntur","or":"ଗୁଣ୍ଟୁର"},"lat":-6.2083116,"lon":106.8333124,"country":"ID"},{"name":"Guntur","lat":-6.9757348,"lon":110.6178873,"country":"ID","state":"Central Java"},{"name":"Guntur","lat":-7.3283677,"lon":110.2073025,"country":"ID","state":"Central Java"},{"name":"Guntur","lat":-7.6044463,"lon":110.0229127,"country":"ID","state":"Central Java"}]
+                
+              
